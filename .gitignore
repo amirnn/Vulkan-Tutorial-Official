@@ -1,6 +1,10 @@
 *.html
 ads.txt
 
+/out/
+attachments/out/**
+/build/
+/.cache/
 **/_out/*
 **/.vscode/*
 .DS_Store
@@ -32,3 +36,4 @@ attachments/simple_engine/android/gradlew
 attachments/simple_engine/android/gradlew.bat
 
 attachments/template/build/**
+compile_commands.json

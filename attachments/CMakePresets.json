@@ -1,0 +1,50 @@
+{
+    "version": 10,
+    "cmakeMinimumRequired": {
+        "major": 4,
+        "minor": 2,
+        "patch": 0
+    },
+    "configurePresets": [
+        {
+            "name": "default",
+            "hidden": true,
+            "generator": "Ninja Multi-Config",
+            "binaryDir": "${sourceDir}/out/build",
+            "cacheVariables": {
+                "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+                "CMAKE_INSTALL_PREFIX": "${sourceDir}/out/install",
+                "CMAKE_INSTALL_LIBDIR": "lib",
+                "VULKAN_SDK": "$env{HOME}/Library/vulkan-sdk/1.4.350.0/aarch64",
+                "PATH": "$env{HOME}/Library/vulkan-sdk/1.4.350.0/aarch64/bin:$env{PATH}"
+            }
+        },
+        {
+            "name": "gcc-16",
+            "inherits": "default",
+            "cacheVariables": {
+                "CMAKE_C_COMPILER": "/usr/bin/gcc",
+                "CMAKE_CXX_COMPILER": "/usr/bin/g++",
+                "CMAKE_BUILD_RPATH": "/usr/lib/gcc/aarch64-redhat-linux/16",
+                "CMAKE_INSTALL_RPATH": "/usr/lib/gcc/aarch64-redhat-linux/16",
+                "CMAKE_INSTALL_RPATH_USE_LINK_PATH": true,
+                "VULKAN_SDK": "$env{HOME}/Library/vulkan-sdk/1.4.350.0/aarch64",
+                "CMAKE_PREFIX_PATH": "$env{HOME}/Library/vulkan-sdk/1.4.350.0/aarch64;$env{HOME}/.local;/home/linuxbrew/.linuxbrew"
+            }
+        }
+    ],
+    "buildPresets": [
+        {
+            "name": "debug",
+            "displayName": "Debug Build",
+            "configurePreset": "gcc-16",
+            "configuration": "Debug"
+        },
+        {
+            "name": "release",
+            "displayName": "Release Build",
+            "configurePreset": "gcc-16",
+            "configuration": "Release"
+        }
+    ]
+}
